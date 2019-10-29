@@ -19,6 +19,7 @@ class CreateRiwayatPasienTable extends Migration
             $table->foreign('id_pasien')->references('id')->on('data_pasien')->onDelete('CASCADE');
             $table->integer('tahun');
             $table->string('bulan');
+            $table->string('jenis_tindakan');
             $table->string('status');
             $table->timestamps();
         });

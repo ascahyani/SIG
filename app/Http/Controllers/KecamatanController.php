@@ -24,16 +24,13 @@ class KecamatanController extends Controller
 
     public function store(Request $request)
     {
+        
         DB::table('data_kecamatan')->insert([
             'nama_kecamatan'=>$request->nama_kecamatan,
-            'luas_daerah'=>$request->luas_daerah,
-            'jumlah_penduduk'=>$request->jumlah_penduduk,
-            'kepadatan_penduduk'=>$request->kepadatan_penduduk,
-            'tahun'=>$request->tahun,
-            'bulan'=>$request->bulan,
-            'area'=>$request->area
+            
         ]);
 
+    
         return redirect('/data_kecamatan');
 
     }
@@ -52,12 +49,7 @@ class KecamatanController extends Controller
         //update data pegawai
         DB::table('data_kecamatan')->where('id',$request->id)->update([
             'nama_kecamatan'=>$request->nama_kecamatan,
-            'luas_daerah'=>$request->luas_daerah,
-            'jumlah_penduduk'=>$request->jumlah_penduduk,
-            'kepadatan_penduduk'=>$request->kepadatan_penduduk,
-            'tahun'=>$request->tahun,
-            'bulan'=>$request->bulan,
-            'area'=>$request->area
+            
         ]);
 
         return redirect('/data_kecamatan');

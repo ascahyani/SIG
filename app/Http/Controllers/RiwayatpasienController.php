@@ -35,7 +35,9 @@ class RiwayatpasienController extends Controller
             'id_pasien'=>$request->nama_pasien,
             'tahun'=>$request->tahun,
             'bulan'=>$request->bulan,
-            'status'=>$request->status
+            'jenis_tindakan'=>$request->jenis_tindakan,
+            'status'=>$request->status,
+            'created_at' => date("Y-m-d H:i:s")
         ]);
 
         return redirect('data_riwayat_pasien');
@@ -59,9 +61,19 @@ class RiwayatpasienController extends Controller
             'id_pasien'=>$request->nama_pasien,
             'tahun'=>$request->tahun,
             'bulan'=>$request->bulan,
+            'jenis_tindakan'=>$request->jenis_tindakan,
             'status'=>$request->status
         ]);
 
+        return redirect('/data_riwayat_pasien');
+    }
+
+    public function hapus($id)
+    {
+        //menghapus data berdasarkan id yg dipilih
+        DB::table('riwayat_pasien')->where('id',$id)->delete();
+
+        //balik kehalaman depan
         return redirect('/data_riwayat_pasien');
     }
 }

@@ -29,9 +29,10 @@
                                 <div class="card m-b-20">
                                     <div class="card-body">
 
-                                        <h4 class="mt-0 header-title">Halaman Kelola Data Riwayat Pasien</h4><a href="/data_riwayat_pasien/tambah"class="btn btn-primary btn-md" id="right-panel-link">Tambah Data Baru</a>
+                                        <h4 class="mt-0 header-title">Halaman Kelola Data Riwayat Pasien</h4>
+                                        <a href="/data_riwayat_pasien/tambah"class="btn btn-primary btn-md float-right mb-4" id="right-panel-link">Tambah Data Baru</a>
                                         
-
+                                        <div class="table-responsive">
                                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                             <tr>			
@@ -39,6 +40,7 @@
                                                 <th>Nama Pasien</th>
                                                 <th>Tahun</th>
                                                 <th>Bulan</th>
+                                                <th>jenis Tindakan</th>
                                                 <th>Status</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -54,17 +56,20 @@
                                                     <td>{{ $riwayat->pasien->nama_pasien }}</td>
                                                     <td>{{ $riwayat->tahun }}</td>
                                                     <td>{{ $riwayat->bulan }}</td>
+                                                    <td>{{ $riwayat->jenis_tindakan }}</td>
                                                     <td>{{ $riwayat->status}}</td>
 
                                                         <td>
                                                         <a href="/riwayat_pasien/edit/{{$riwayat->id}}" class="btn btn-success btn-sm">Edit</a>
                                                         |
-                                                        <a class="btn btn-danger btn-sm">Hapus</a>
+                                                        <a href="/riwayat_pasien/hapus/{{$riwayat->id}}" class="btn btn-danger btn-sm">Hapus</a>
                                                         </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div> <!-- end col -->

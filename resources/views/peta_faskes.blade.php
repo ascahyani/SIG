@@ -21,10 +21,68 @@
                    </div>
                </div>
                <!-- end row -->
+               <div class="row">
+                            <div class="col-12">
+                                <div class="card m-b-20">
+                                    <div class="card-body">
 
-               <div class="form-group">
-                    <div id="dvMap" style="width: 100%; height: 400px;"></div>
-                </div>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="card">
+                                                    <div class="header">
+                                                        <h2>
+                                                            <center>Peta Penyebaran Pasien Penyakit Tuberkulosis di Kota Bandar Lampung</center>
+                                                           
+                                                        </h2>
+                                                    </div>
+                                                    <hr />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="mt-0 header-title">Pilih Bulan dan Tahun</h4>
+                                        <form method="post" action="/peta_faskes/cari" class="form-horizontal">
+
+                                            {{csrf_field()}}  <!-- untuk generate token-->
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Bulan</label>
+                                            <div class="col-sm-10">
+                                                <select class="custom-select" name="bulan">
+                                                    <option selected>Pilih Bulan</option>
+                                                    <option value="Januari">Januari</option>
+                                                    <option value="Februari">februari</option>
+                                                    <option value="Maret">Maret</option>
+                                                    <option value="April">April</option>
+                                                    <option value="Mei">Mei</option>
+                                                    <option value="Juni">Juni</option>
+                                                    <option value="Juli">Juli</option>
+                                                    <option value="Agustus">Agustus</option>
+                                                    <option value="September">September</option>
+                                                    <option value="Oktober">Oktober</option>
+                                                    <option value="November">November</option>
+                                                    <option value="Desember">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Tahun</label>
+                                            <div class="col-sm-10">
+                                                <select class="custom-select" name="tahun" id="tahun">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                            
+                                            <div class="pull-right">
+                                                <button type="submit" class="btn btn-primary btn-rounded btn-md mb-4 float-right">Cari</button>
+                                            </div>
+                                        </form>
+
+                                      
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
        
            </div> <!-- container-fluid -->
        
@@ -34,55 +92,22 @@
 
 @endsection
 @push('script')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3Pgxfyxnzmop6amI-Un99r3MYjapD_4&libraries=places" async defer> </script>
-<script type="text/javascript">
 
-var markers = [
 
-@foreach( $d as $a){
- "lat": '{{$a->latitude}}',
- "long": '{{$a->longitude}}',
- "nama_faskes": '{{$a->nama_faskes}}'
- },
-@endforeach
-    ];
+    <script>
+        $(document).ready(function(){
+            var tanggal = new Date().getFullYear();
+            min = tanggal - 4;
+            max = tanggal + 4;
+            select = document.getElementById('tahun');
 
-        window.onload = function () {
-
-            var mapOptions = {
-            center: new google.maps.LatLng(-5.3971396, 105.2667887),
-                zoom: 12,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var infoWindow = new google.maps.InfoWindow();
-            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
-
-            for (i = 0; i < markers.length; i++) {
-                var data = markers[i];
-        var latnya = data.lat;
-        var longnya = data.long;
-
-        var myLatlng = new google.maps.LatLng(latnya, longnya);
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    icon: {
-                      url: "/assets/assets/images/marker2.png",
-                      scaledSize: new google.maps.Size(30, 30)
-                          },
-                    title: data.nama_faskes
-                });
-                (function (marker, data) {
-                    google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent('<b>Nama Faskes</b> :' + data.nama_faskes + '<br>');
-                        infoWindow.open(map, marker);
-                    });
-                })(marker, data);
-            }
-  google.maps.event.addListener(map, 'click', function( event ){
-  alert( "latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
-});
-        }
+            for (var i=min; i<=max; i++){
+                var opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = i;
+                select.appendChild(opt);
+            } 
+        })
     </script>
 
 @endpush

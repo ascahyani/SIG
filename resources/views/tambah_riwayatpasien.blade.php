@@ -75,11 +75,31 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jenis Tindakan</label>
+                                            <div class="col-sm-10">
+                                                <select class="custom-select" name="jenis_tindakan">
+                                                    <option selected>Pilih Jenis</option>
+                                                    <option value="Sebelum Pengobatan Hasil Mikroskopis">Sebelum Pengobatan Hasil Mikroskopis</option>
+                                                    <option value="Hasil Mikroskopis Bulan Ke 2">Hasil Mikroskopis Bulan Ke 2</option>
+                                                    <option value="Hasil Mikroskopis Bulan Ke 3">Hasil Mikroskopis Bulan Ke 3</option>
+                                                    <option value="Hasil Mikroskopis Bulan Ke 5">Hasil Mikroskopis Bulan Ke 5</option>
+                                                    <option value="Hasil Akhir Pengobatan">Hasil Akhir Pengobatan</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Status Pengobatan</label>
                                             <div class="col-sm-10">
                                                 <select class="custom-select" name="status">
                                                     <option selected>Pilih Status</option>
-                                                    <option value="Pengobatan">Pengobatan</option>
+                                                    <option value="Tidak Dilakukan">Tidak Dilakukan</option>
+                                                    <option value="Negatif">Negatif</option>
+                                                    <option value="Positif">Positif</option>
+                                                    <option value="Pengobatan Lengkap">Pengobatan Lengkap</option>
+                                                    <option value="Putus Berobat">Putus Berobat</option>
+                                                    <option value="Gagal">Gagal</option>
                                                     <option value="Sembuh">Sembuh</option>
                                                     <option value="Meninggal">Meninggal</option>
                                                     

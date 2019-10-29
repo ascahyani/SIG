@@ -34,6 +34,7 @@
                                         @foreach ($data_pasien as $pasien)
                                             <form method="post" action="/data_pasien_tb/update" class="form-horizontal">
                                             {{csrf_field()}}  <!-- untuk generate token-->
+                                            {{method_field('put')}}
 
                                             <input type="hidden" name="id" name="id" value="{{$pasien->id}}">
                                             
@@ -54,10 +55,10 @@
                                             <label class="col-sm-2 col-form-label">Jenis TB</label>
                                             <div class="col-sm-10">
                                                 <select class="custom-select" name="jenis_tb">
-                                                    <option selected>-Jenis TB-</option>
-                                                    @foreach($jenis_tb as $tb)
-                                                        <option  value="{{$tb->id}}">{{$tb->nama}}</option>
-                                                    @endforeach
+                                                    <option selected>Pilih Jenis TB</option>
+                                                    <option value="Paru">Paru</option>
+                                                    <option value="Ekstra Paru">Ekstra Paru</option>
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -85,6 +86,18 @@
                                             <label for="example-date-input" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="date" value="2011-08-19" name="tanggal_lahir" value="{{$pasien->tanggal_lahir}}" id="example-date-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jenis TB</label>
+                                            <div class="col-sm-10">
+                                                <select class="custom-select" name="tipe_diagnosa">
+                                                    <option selected>Pilih Tipe Diagnosa</option>
+                                                    <option value="Terdiagnosis Klinis">Terdiagnosis Klinis</option>
+                                                    <option value="Terkonfirmasi Bakteriologis">Terkonfirmasi Bakteriologis</option>
+                                                    
+                                                </select>
                                             </div>
                                         </div>
 

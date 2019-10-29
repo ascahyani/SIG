@@ -33,6 +33,7 @@
                                         @foreach ($riwayat_pasien as $riwayat)
                                             <form method="post" action="/riwayat_pasien/update" class="form-horizontal">
                                             {{csrf_field()}}  <!-- untuk generate token-->
+                                            
 
                                             <input type="hidden" name="id" name="id" value="{{$riwayat->id}}">
                                             
@@ -59,7 +60,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Bulan</label>
                                             <div class="col-sm-10">
-                                                <select class="custom-select" name="bulan" value="{{$riwayat->bulan}}">
+                                                <select class="custom-select" name="bulan" value="{{old('bulan', $riwayat->bulan)}}">
                                                     <option selected>-Pilih Bulan-</option>
                                                     <option value="Januari">Januari</option>
                                                     <option value="Februari">februari</option>
@@ -73,6 +74,21 @@
                                                     <option value="Oktober">Oktober</option>
                                                     <option value="November">November</option>
                                                     <option value="Desember">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jenis Tindakan</label>
+                                            <div class="col-sm-10">
+                                                <select class="custom-select" name="jenis_tindakan" value="{{$riwayat->jenis_tindakan}}">
+                                                    <option selected>Pilih Jenis</option>
+                                                    <option value="Sebelum Pengobatan Hasil Mikroskopis">Sebelum Pengobatan Hasil Mikroskopis</option>
+                                                    <option value="Hasil Mikroskopis Bulan Ke 2">Hasil Mikroskopis Bulan Ke 2</option>
+                                                    <option value="Hasil Mikroskopis Bulan Ke 3">Hasil Mikroskopis Bulan Ke 3</option>
+                                                    <option value="Hasil Mikroskopis Bulan Ke 5">Hasil Mikroskopis Bulan Ke 5</option>
+                                                    <option value="Hasil Akhir Pengobatan">Hasil Akhir Pengobatan</option>
+                                                    
                                                 </select>
                                             </div>
                                         </div>

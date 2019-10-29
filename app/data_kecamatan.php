@@ -25,4 +25,9 @@ class data_kecamatan extends Model
     {
         return $this->hasMany('App\data_pasien', 'id_kecamatan');
     }
+    
+    public function kepadatan()
+    {
+        return $this->hasMany('App\data_kepadatan', 'id_kecamatan');
+    }
 }

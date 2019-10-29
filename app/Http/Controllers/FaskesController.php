@@ -32,6 +32,7 @@ class FaskesController extends Controller
         DB::table('data_faskes')->insert([
             'id_kecamatan'=>$request->kecamatan,
             'nama_faskes'=>$request->nama_faskes,
+            'tahun'=>$request->tahun,
             'latitude'=>$request->latitude,
             'longitude'=>$request->longitude,
             'alamat'=>$request->alamat,
@@ -58,6 +59,7 @@ class FaskesController extends Controller
         DB::table('data_faskes')->where('id',$request->id)->update([
             'id_kecamatan'=>$request->nama_kecamatan,
             'nama_faskes'=>$request->nama_faskes,
+            'tahun'=>$request->tahun,
             'latitude'=>$request->latitude,
             'longitude'=>$request->longitude,
             'alamat'=>$request->alamat,
@@ -65,6 +67,15 @@ class FaskesController extends Controller
         ]);
 
         return redirect('/data_faskes');
+    }
+
+    public function hapus($id)
+    {
+        //menghapus data berdasarkan id yg dipilih
+        DB::table('data_faskes')->where('id',$id)->delete();
+
+        //balik kehalaman depan
+        return redirect('data_faskes');
     }
 
     

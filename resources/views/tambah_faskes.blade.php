@@ -48,6 +48,13 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="example-text-input" class="col-sm-2 col-form-label">Tahun</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" name="tahun" id="example-text-input">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
                                             <label for="example-text-input" class="col-sm-2 col-form-label">Nama Faskes</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="text" name="nama_faskes" id="example-text-input">

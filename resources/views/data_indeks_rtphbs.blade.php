@@ -55,7 +55,7 @@
                                                     <td>
                                                     <a href="/data_indeks_rtphbs/edit/{{$indeks->id}}" class="btn btn-success btn-sm">Edit</a>
                                                     |
-                                                    <a class="btn btn-danger btn-sm">Hapus</a>
+                                                    <a href="/data_indeks_rtphbs/hapus/{{$indeks->id}}" class="btn btn-danger btn-sm">Hapus</a>
                                                     </td>
                                             </tr>
                                             @endforeach

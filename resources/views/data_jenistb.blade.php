@@ -53,7 +53,7 @@
                                                     <td>
                                                     <a href="/data_jenistb/edit/{{$tb->id}}" class="btn btn-success btn-sm">Edit</a>
                                                     |
-                                                    <a class="btn btn-danger btn-sm">Hapus</a>
+                                                    <a href="/data_jenistb/hapus/{{$tb->id}}" class="btn btn-danger btn-sm">Hapus</a>
                                                     </td>
                                             </tr>
                                             @endforeach

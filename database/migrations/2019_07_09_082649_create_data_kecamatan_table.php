@@ -16,12 +16,6 @@ class CreateDataKecamatanTable extends Migration
         Schema::create('data_kecamatan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_kecamatan');
-            $table->integer('luas_daerah');
-            $table->integer('jumlah_penduduk');
-            $table->integer('kepadatan_penduduk');
-            $table->string('tahun');
-            $table->string('bulan');
-            $table->string('area');
             $table->timestamps();
         });
     }

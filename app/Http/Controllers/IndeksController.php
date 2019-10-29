@@ -59,5 +59,14 @@ class IndeksController extends Controller
         return redirect('/data_indeks_rtphbs');
 
     }
+
+    public function hapus($id)
+    {
+        //menghapus data berdasarkan id yg dipilih
+        DB::table('indeks_rtphbs')->where('id',$id)->delete();
+
+        //balik kehalaman depan
+        return redirect('data_indeks_rtphbs');
+    }
     
 }

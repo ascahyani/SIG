@@ -38,6 +38,7 @@
                                                 <th>No.</th>
                                                 <th>Nama Fasilitas Kesehatan</th>
                                                 <th>Kecamatan</th>
+                                                <th>Tahun</th>
                                                 <th>Latitude</th>
                                                 <th>Longitude</th>
                                                 <th>Alamat</th>
@@ -55,6 +56,7 @@
                                                 <td>{{ $no}}</td>
                                                 <td>{{ $faskes->nama_faskes }}</td>
                                                 <td>{{ $faskes->kec->nama_kecamatan }}</td>
+                                                <td>{{ $faskes->tahun }}</td>
                                                 <td>{{ $faskes->latitude }}</td>
                                                 <td>{{ $faskes->longitude }}</td>
                                                 <td>{{ $faskes->alamat }}</td>
@@ -63,7 +65,7 @@
                                                     <td>
                                                     <a href="/data_faskes/edit/{{$faskes->id}}" class="btn btn-success btn-sm">Edit</a>
                                                     |
-                                                    <a class="btn btn-danger btn-sm">Hapus</a>
+                                                    <a href="/data_faskes/hapus/{{$faskes->id}}" class="btn btn-danger btn-sm">Hapus</a>
                                                     </td>
                                             </tr>
                                             @endforeach

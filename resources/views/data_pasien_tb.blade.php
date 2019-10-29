@@ -31,8 +31,10 @@
 
                                         <h4 class="mt-0 header-title">Halaman Kelola Data Pasien</h4>
                                         
-
-                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;"><a href="/data_pasien_tb/tambah" class="btn btn-primary btn-md" id="right-panel-link">Tambah Data Baru</a>
+                                        <a href="/data_pasien_tb/tambah"class="btn btn-primary btn-md float-right mb-4" id="right-panel-link">Tambah Data Baru</a>
+                                        
+                                        <div class="table-responsive">
+                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                             <tr>			
                                                 <th>No.</th>
@@ -42,6 +44,7 @@
                                                 <th>Nama</th>
                                                 <th>Tanggal Lahir</th>
                                                 <th>Alamat</th>
+                                                <th>Tipe Diagnosa</th>
                                                 <th>latitude</th>
                                                 <th>longitude</th>
                                                 <th>Mulai Pengobatan</th>
@@ -58,10 +61,11 @@
                                                     <td>{{ $no}}</td>
                                                     <td>{{ $pasien->kec->nama_kecamatan}}</td>
                                                     <td>{{ $pasien->faskes->nama_faskes }}</td>
-                                                    <td>{{ $pasien->tb->nama }}</td>
+                                                    <td>{{ $pasien->jenis_tb }}</td>
                                                     <td>{{ $pasien->nama_pasien }}</td>
                                                     <td>{{ $pasien->tanggal_lahir }}</td>
                                                     <td>{{ $pasien->alamat }}</td>
+                                                    <td>{{ $pasien->tipe_diagnosa }}</td>
                                                     <td>{{ $pasien->latitude }}</td>
                                                     <td>{{ $pasien->longitude }}</td>
                                                     <td>{{ $pasien->tanggal_mulaipengobatan }}</td>

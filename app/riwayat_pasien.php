@@ -8,7 +8,7 @@ class riwayat_pasien extends Model
 {
     protected $table="riwayat_pasien";
     protected $fillable=[
-        'id_Pasien', 'tahun','bulan','status'
+        'id_Pasien', 'tahun','bulan','jenis_tindakan','status'
     ];
 
     public function pasien()

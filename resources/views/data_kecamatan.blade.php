@@ -35,12 +35,7 @@
                                                 <tr>
                                                     <th>No.</th>
                                                     <th>Nama Kecamatan</th>
-                                                    <th>Luas Daerah</th>
-                                                    <th>Jumlah Penduduk</th>
-                                                    <th>Kepadatan Penduduk</th>
-                                                    <th>Tahun</th>
-                                                    <th>Bulan</th>
-                                                    <th>Area</th>
+                                                    
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -51,12 +46,7 @@
                                             <tr>
                                                 <td>{{ $no}}</td>
                                                 <td>{{ $kec->nama_kecamatan }}</td>
-                                                <td>{{ $kec->luas_daerah }}</td>
-                                                <td>{{ $kec->jumlah_penduduk }}</td>
-                                                <td>{{ $kec->kepadatan_penduduk }}</td>
-                                                <td>{{ $kec->tahun }}</td>
-                                                <td>{{ $kec->bulan }}</td>
-                                                <td>{{ $kec->area }}</td>
+                                                
                                                     <td>
                                                     <a href="/data_kecamatan/edit/{{$kec->id}}" class="btn btn-success btn-sm">Edit</a>
                                                     |

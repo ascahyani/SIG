@@ -73,7 +73,11 @@
                                     <!-- item-->
                                     <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i> Ubah Password</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                 </div>                                                                    
                             </div>
                         </li>
@@ -112,7 +116,7 @@
                                 <ul class="submenu">
                                     <li><a href="/peta_pasien"> Peta Penyebaran TB</a></li>
                                     <li><a href="/peta_faskes"> Peta Penyebaran Faskes</a></li>
-                                    <li><a href="maps-vector.html"> Peta Daerah Rawan TB</a></li>
+                                    <li><a href="/gpoligon"> Peta Daerah Rawan TB</a></li>
                                 </ul>
                             </li>
                             
@@ -122,7 +126,7 @@
                                     <li><a href="/data_pasien_tb">Data Pasien TB</a></li>
                                     <li><a href="/data_riwayat_pasien">Data Riwayat Pasien</a></li>
                                     <li><a href="/data_faskes">Data Fasilitas Kesehatan</a></li>
-                                    <li><a href="/data_penduduk">Data Penduduk</a></li>
+                                    <li><a href="/data_kepadatan">Data Kepadatan Penduduk</a></li>
                                     <li><a href="/data_jenistb">Data Jenis TB</a></li>
                                     <li><a href="/data_kecamatan">Data Kecamatan</a></li>
                                     <li><a href="/data_indeks_rtphbs">Data Indeks RTPHBS</a></li>
@@ -199,7 +203,7 @@
     
     </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3Pgxfyxnzmop6amI-Un99r3MYjapD_4&libraries=places" async defer> </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6a6dy99jZcyrlIe7OghOsZ0khO1x4O8&libraries=places" async defer> </script>
 <script type="text/javascript">
     window.onload = function() {
 
