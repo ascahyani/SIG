@@ -62,11 +62,12 @@
 var markers = [
 
 @foreach( $jumlah_pasien as $a){  //variabel faskes dari controller SIGTBcontroller@peta_faskes2
- "lat": '{{ $a->latitude }}',     //panggil lat
- "long": '{{ $a->longitude }}',       //panggil long
- "nama_faskes": '{{ $a->nama_faskes }}',      //panggil namafaskes
- "alamat": '{{ $a->alamat }}',          //panggil alamat
- "jumlah_pasien": '{{$a->jumlah_pasien}}'
+ "lat": "{{ $a['lat'] }}",     //panggil lat
+ "long": "{{ $a['long'] }}",       //panggil long
+ "nama_faskes": "{{ $a['nama_faskes'] }}",      //panggil namafaskes
+ "alamat": "{{ $a['alamat'] }}",          //panggil alamat
+ "jumlah_pasien": "{{ $a['jumlah_pasien'] }}",
+ "nama_kecamatan": "{{  $a['kecamatan'] }}"
 
  },
 @endforeach
@@ -101,10 +102,10 @@ var markers = [
                 (function (marker, data) {
                     google.maps.event.addListener(marker, "click", function (e) {
                         infoWindow.setContent(          //bikin info di titik nya, kalo di klik ntar muncul
-                            '<p><b>Nama Faskes</b> :' + data.nama_faskes + '<br></p>' +
-                            '<p><b>Kecamatan</b> :' + data.nama_kecamatan + '<br></p>' +
-                            '<p><b>Alamat</b> :' + data.alamat + '<br></p>' + '<br>' +
-                            '<p><b>Jumlah Pasien</b> :' + data.jumlah_pasien + '<br></p>' 
+                            '<p><b>Nama Faskes</b> : ' + data.nama_faskes + '<br></p>' +
+                            '<p><b>Kecamatan</b> : ' + data.nama_kecamatan + '<br></p>' +
+                            '<p><b>Alamat</b> : ' + data.alamat + '<br></p>' + '<br>' +
+                            '<p><b>Jumlah Pasien</b> : ' + data.jumlah_pasien + '<br></p>' 
                             
                         );
                         infoWindow.open(map, marker);

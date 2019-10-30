@@ -66,30 +66,46 @@ class SIGTBController extends Controller
 
 
     //fungsi titik faskes supaya muncul semua 10 Okt19
-    public function titik_faskes(Request $f)
+    public function titik_faskes(Request $Request)
     {
         //buat ngambil jumlah pasien di faskes tiap bulan
-        $bulan = "Maret";
-        $tahun = 2017; 
+        $bulan = $Request->bulan;
+        $tahun = $Request->tahun; 
 
-        $titik = DB::table('data_faskes')
-                    ->leftjoin('data_pasien', 'data_pasien.id_faskes', '=', 'data_faskes.id')
-                    ->leftjoin('riwayat_pasien', 'riwayat_pasien.id_pasien', '=', 'data_pasien.id')
-                    ->select(   'data_faskes.nama_faskes', 
-                                'data_faskes.latitude', 
-                                'data_faskes.longitude', 
-                                'data_faskes.alamat', 
-                                DB::raw('count(riwayat_pasien.id_pasien) as jumlah_pasien'))
-                    ->groupBy('data_faskes.id')
-                    // ->where('riwayat_pasien.tahun', $tahun) //tiap bulan dan tahun
-                    // ->where('riwayat_pasien.bulan',$bulan)
-                    ->get();
+        $titik = DB::table('data_faskes')->join('data_kecamatan', 'data_kecamatan.id', '=', 'data_faskes.id_kecamatan')->get();
 
-        return $titik;
-        // return view ('peta_faskes2')->with([  //return ke peta_pasien dengan bikin variabel faskes
-        //     'jumlah_pasien' => $titik //manggil jumlah pasien di faskes itu
-        // ]);
+        $data_titik = [];
 
+        foreach ($titik as $key => $value) {
+            $data_titik[] = [
+                'id' => $value->id,
+                'nama_faskes' => $value->nama_faskes,
+                'kecamatan' => $value->nama_kecamatan,
+                'lat' => $value->latitude,
+                'long' => $value->longitude,
+                'alamat' => $value->alamat,
+                'jumlah_pasien' => $this->apiJumlahRiwayat($value->id,$bulan,$tahun)
+            ];
+        }
+
+        // return $data_titik;
+        return view ('peta_faskes2')->with([  //return ke peta_pasien dengan bikin variabel faskes
+            'jumlah_pasien' => $data_titik //manggil jumlah pasien di faskes itu
+        ]);
+
+    }
+
+    public function apiJumlahRiwayat($id_faskes,$bulan,$tahun)
+    {
+        $riwayat = DB::table('riwayat_pasien')
+                    ->join('data_pasien', 'data_pasien.id', '=', 'riwayat_pasien.id_pasien')
+                    ->join('data_faskes', 'data_faskes.id', '=', 'data_pasien.id')
+                    ->where('riwayat_pasien.tahun', $tahun)
+                    ->where('riwayat_pasien.bulan', $bulan)
+                    ->where('data_pasien.id_faskes', $id_faskes)
+                    ->count();
+        return $riwayat;
+        # code...
     }
 
     public function peta_pasien()
